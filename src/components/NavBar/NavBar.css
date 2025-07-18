@@ -1,0 +1,229 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar.scrolled {
+  background: rgba(15, 15, 35, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.nav-logo {
+  font-size: 36px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  position: relative;
+  overflow: hidden;
+  margin-right: 60px;
+}
+
+.nav-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.nav-logo:hover::before {
+  left: 100%;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 15px 0;
+  transition: all 0.3s ease;
+  position: relative;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #8B5CF6;
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.nav-cta {
+  display: block;
+  padding: 16px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  margin-left: 30px;
+}
+
+.nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-cta:hover::before {
+  left: 100%;
+}
+
+.nav-cta:hover {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 20px;
+    height: 80px;
+  }
+
+  .nav-logo {
+    font-size: 28px;
+    margin-right: 0;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 26, 0.98);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 25px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    justify-content: flex-start;
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    font-size: 18px;
+    padding: 15px 0;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 15px;
+    height: 75px;
+  }
+
+  .nav-logo {
+    font-size: 24px;
+  }
+
+  .nav-menu {
+    top: 75px;
+    padding: 25px 15px;
+    gap: 20px;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
+}
